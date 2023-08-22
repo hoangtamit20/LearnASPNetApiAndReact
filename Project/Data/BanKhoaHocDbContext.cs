@@ -19,6 +19,7 @@ namespace Project.Data
 
         #region 
         public DbSet<NguoiDung>? NguoiDungs { get; set; }
+        public DbSet<Product>? Products { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -46,8 +46,7 @@ namespace Project.Migrations
 
                     b.Property<DateOnly?>("NgaySinh")
                         .IsRequired()
-                        .HasColumnType("date")
-                        .HasColumnName("DATE");
+                        .HasColumnType("DATE");
 
                     b.Property<string>("TenDangNhap")
                         .IsRequired()
@@ -59,7 +58,7 @@ namespace Project.Migrations
                     b.HasIndex("TenDangNhap")
                         .IsUnique();
 
-                    b.ToTable("NguoiDungs");
+                    b.ToTable("NguoiDungs", (string)null);
                 });
 #pragma warning restore 612, 618
         }

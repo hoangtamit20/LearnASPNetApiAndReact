@@ -54,7 +54,7 @@ namespace Project.Entity
         public string? MatKhau { get => matKhau; set => matKhau = value; }
 
         [DisplayName("Ngày sinh : ")]
-        [Column("DATE")]
+        [Column(TypeName = "DATE")]
         [Required(ErrorMessage = "{0} không được để trống.")]
         [NgaySinhExpression]
         public DateOnly? NgaySinh { get => ngaySinh; set => ngaySinh = value; }

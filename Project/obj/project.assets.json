@@ -3656,11 +3656,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\Final\\Project\\Project.csproj",
+      "projectUniqueName": "d:\\Final\\Project\\Project.csproj",
       "projectName": "Project",
-      "projectPath": "e:\\Final\\Project\\Project.csproj",
+      "projectPath": "d:\\Final\\Project\\Project.csproj",
       "packagesPath": "C:\\Users\\hoang\\.nuget\\packages\\",
-      "outputPath": "e:\\Final\\Project\\obj\\",
+      "outputPath": "d:\\Final\\Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hoang\\AppData\\Roaming\\NuGet\\NuGet.Config",

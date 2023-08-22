@@ -12,7 +12,7 @@ using Project.Data;
 namespace Project.Migrations
 {
     [DbContext(typeof(BanKhoaHocDbContext))]
-    [Migration("20230820024916_AddNguoiDung")]
+    [Migration("20230821094205_AddNguoiDung")]
     partial class AddNguoiDung
     {
         /// <inheritdoc />
@@ -49,8 +49,7 @@ namespace Project.Migrations
 
                     b.Property<DateOnly?>("NgaySinh")
                         .IsRequired()
-                        .HasColumnType("date")
-                        .HasColumnName("DATE");
+                        .HasColumnType("DATE");
 
                     b.Property<string>("TenDangNhap")
                         .IsRequired()

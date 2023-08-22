@@ -19,7 +19,7 @@ namespace Project.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TenDangNhap = table.Column<string>(type: "VARCHAR(20)", maxLength: 20, nullable: false),
                     MatKhau = table.Column<string>(type: "VARCHAR(250)", maxLength: 250, nullable: false),
-                    DATE = table.Column<DateOnly>(type: "date", nullable: false),
+                    NgaySinh = table.Column<DateOnly>(type: "DATE", nullable: false),
                     Email = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
                     DiaChi = table.Column<string>(type: "NVARCHAR(150)", maxLength: 150, nullable: true)
                 },

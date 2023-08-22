@@ -22,11 +22,30 @@ namespace Project.Controllers
             _logger = logger;
         }
 
+        // [HttpGet]
+        // public IActionResult NguoiDungs()
+        // {
+        //     _logger.LogInformation("Hello các bạn nhỏ ahii!");
+        //     if (_nguoiDungRepository.nguoiDungs() == null)
+        //         return BadRequest(new ResponseService()
+        //         {
+        //             Success = false,
+        //             Message = "NguoiDungs is null",
+        //             Data = null
+        //         });
+        //     return Ok(new ResponseService()
+        //     {
+        //         Success = true,
+        //         Message = "Get all NguoiDungs success!",
+        //         Data = _nguoiDungRepository.nguoiDungs()
+        //     });
+        // }
+
         [HttpGet]
-        public IActionResult NguoiDungs()
+        public IActionResult NguoiDungs(int pageNumber = 1, int pageSize = 10)
         {
-            _logger.LogInformation("Hello các bạn nhỏ ahii!");
-            if (_nguoiDungRepository.nguoiDungs() == null)
+            var nguoiDungs = _nguoiDungRepository.nguoiDungs(pageNumber, pageSize);
+            if (nguoiDungs == null)
                 return BadRequest(new ResponseService()
                 {
                     Success = false,
@@ -37,9 +56,10 @@ namespace Project.Controllers
             {
                 Success = true,
                 Message = "Get all NguoiDungs success!",
-                Data = _nguoiDungRepository.nguoiDungs()
+                Data = nguoiDungs
             });
         }
+
 
         [HttpPost]
         public IActionResult CreateNguoiDung(NguoiDung nguoiDung)
@@ -90,6 +110,34 @@ namespace Project.Controllers
             {
                 Success = false,
                 Message = "Invalid token!",
+                Data = null
+            });
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult RemoveNguoiDung(int? id)
+        {
+            if (id != null)
+            {
+                if (_nguoiDungRepository.deleteNguoiDung(id.Value))
+                {
+                    return Ok(new ResponseService(){
+                        Success = true,
+                        Message = "Delete success!",
+                        Data = id.Value
+                    });
+                }
+                return BadRequest(new ResponseService()
+                {
+                    Success = false,
+                    Message = "Failed",
+                    Data = null
+                });
+            }
+            return BadRequest(new ResponseService()
+            {
+                Success = false,
+                Message = "id is null",
                 Data = null
             });
         }

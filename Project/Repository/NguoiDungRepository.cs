@@ -12,7 +12,7 @@ namespace Project.Repository
     public class NguoiDungRepository : INguoiDungRepository
     {
         private readonly BanKhoaHocDbContext _context;
-        
+
         public NguoiDungRepository(BanKhoaHocDbContext context)
         {
             _context = context;
@@ -61,9 +61,19 @@ namespace Project.Repository
 
         public List<NguoiDung>? nguoiDungs() => _context.NguoiDungs != null ? _context.NguoiDungs.ToList() : null;
 
+        public List<NguoiDung>? nguoiDungs(int pageNumber, int pageSize)
+        {
+            return _context.NguoiDungs == null ? null : _context.NguoiDungs
+                                                        .OrderBy(nd => nd.Id)
+                                                        .Skip((pageNumber - 1) * pageSize)
+                                                        .Take(pageSize)
+                                                        .ToList();
+        }
+
         public bool updateNguoiDung(NguoiDung nguoiDung)
         {
-            try{
+            try
+            {
                 if (_context.NguoiDungs == null)
                     return false;
                 var nd = _context.NguoiDungs.FirstOrDefault(nd => nd.Id == nguoiDung.Id);
@@ -77,7 +87,8 @@ namespace Project.Repository
                 var s = _context.NguoiDungs.Update(nd);
                 _context.SaveChanges();
                 return true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 System.Console.WriteLine(ex.Message);
                 return false;
